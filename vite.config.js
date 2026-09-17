@@ -45,5 +45,6 @@ const copyImagesPlugin = () => ({
 })
 
 export default defineConfig({
+  base: './',
   plugins: [react(), copyImagesPlugin()],
 })
