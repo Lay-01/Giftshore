@@ -54,7 +54,18 @@ export function getContent() {
     const saved = localStorage.getItem(CONTENT_KEY)
     if (!saved) return defaultContent
     const parsed = JSON.parse(saved)
-    const res = { ...defaultContent, ...parsed, home: { ...defaultContent.home, ...parsed.home }, story: { ...defaultContent.story, ...parsed.story }, visit: { ...defaultContent.visit, ...parsed.visit }, contact: { ...defaultContent.contact, ...parsed.contact }, community: { ...defaultContent.community, ...parsed.community }, settings: { ...defaultContent.settings, ...parsed.settings }, catalog: { ...defaultContent.catalog, ...parsed.catalog }, products: parsed.products || defaultContent.products }
+    const res = {
+      ...defaultContent,
+      ...parsed,
+      home: { ...defaultContent.home, ...parsed.home },
+      story: { ...defaultContent.story, ...parsed.story },
+      visit: { ...defaultContent.visit, ...parsed.visit },
+      contact: { ...defaultContent.contact, ...parsed.contact },
+      community: { ...defaultContent.community, ...parsed.community },
+      settings: { ...defaultContent.settings, ...parsed.settings },
+      catalog: { ...defaultContent.catalog, ...parsed.catalog },
+      products: defaultProducts
+    }
     if (res.story && (res.story.image === '/images/storefront.webp' || !res.story.image)) {
       res.story.image = '/images/shop-display-tray.webp'
     }

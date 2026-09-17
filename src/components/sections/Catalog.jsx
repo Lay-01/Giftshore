@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { getContent } from '../../data/content.js'
 import { whatsappLink } from '../../lib/links.js'
+import { getImageUrl } from '../../lib/images.js'
 import Icon from '../ui/Icon.jsx'
 
 function ProductCard({ product }) {
   return <article className="product-card">
     <div className="product-image">
-      <img src={product.image} alt={product.name} loading="lazy" />
+      <img src={getImageUrl(product.image)} alt={product.name} loading="lazy" />
       <span>{product.label}</span>
       <a href={whatsappLink(product)} target="_blank" rel="noreferrer" className="product-inquire"><Icon name="chat" /> Inquire</a>
     </div>

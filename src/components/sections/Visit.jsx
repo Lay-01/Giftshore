@@ -2,6 +2,7 @@ import { STORE_ADDRESS, STORE_HOURS, STORE_PHONE } from '../../data/site.js'
 import { mapsLink } from '../../lib/links.js'
 import Icon from '../ui/Icon.jsx'
 import { getContent } from '../../data/content.js'
+import { getImageUrl } from '../../lib/images.js'
 
 function Info({ icon, title, children }) {
   return <div className="info">
@@ -14,7 +15,7 @@ export default function Visit() {
   const { visit, settings } = getContent()
   return <section id="visit" className="section tinted">
     <div className="container split visit-grid">
-      <div className="image-frame visit-image"><img src={visit.image} alt="Inside the Giftshore shop — the bangle wall" loading="lazy" /></div>
+      <div className="image-frame visit-image"><img src={getImageUrl(visit.image)} alt="Inside the Giftshore shop — the bangle wall" loading="lazy" /></div>
       <div className="visit-content">
         <p className="eyebrow">Visit Us</p>
         <h2>{visit.heading}</h2>

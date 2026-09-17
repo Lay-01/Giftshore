@@ -1,13 +1,14 @@
 import { scrollToSection } from '../../lib/navigation.js'
 import Icon from '../ui/Icon.jsx'
 import { getContent } from '../../data/content.js'
+import { getImageUrl } from '../../lib/images.js'
 
 export default function Story() {
   const { story } = getContent()
   return <section id="story" className="section tinted">
     <div className="container split story-grid">
       <div className="story-image image-frame image-frame--storefront">
-        <img src={story.image} alt="Curated boutique collection display" />
+        <img src={getImageUrl(story.image)} alt="Curated boutique collection display" />
         <span className="story-image-tag">{story.tag}</span>
       </div>
       <div className="story-content">

@@ -2,6 +2,7 @@ import { scrollToSection } from '../../lib/navigation.js'
 import Button from '../ui/Button.jsx'
 import Icon from '../ui/Icon.jsx'
 import { getContent } from '../../data/content.js'
+import { getImageUrl } from '../../lib/images.js'
 
 export default function Hero() {
   const { home } = getContent()
@@ -74,15 +75,15 @@ export default function Hero() {
         <div className="hero-collage reveal">
           <div className="hero-collage__col">
             <figure className="hero-card hero-card--top">
-              <img src={home.heroImages[0]} alt="Dainty necklaces display" loading="lazy" />
+              <img src={getImageUrl(home.heroImages[0])} alt="Dainty necklaces display" loading="lazy" />
             </figure>
             <figure className="hero-card hero-card--bottom">
-              <img src={home.heroImages[1]} alt="Jewelry display tray" loading="lazy" />
+              <img src={getImageUrl(home.heroImages[1])} alt="Jewelry display tray" loading="lazy" />
             </figure>
           </div>
           <div className="hero-collage__col hero-collage__col--tall">
             <figure className="hero-card hero-card--tall">
-              <img src={home.heroImages[2]} alt="Cute strawberry keychain and pen" loading="lazy" />
+              <img src={getImageUrl(home.heroImages[2])} alt="Cute strawberry keychain and pen" loading="lazy" />
             </figure>
           </div>
         </div>

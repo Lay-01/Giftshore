@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { getContent, saveContent } from '../data/content.js'
+import { getImageUrl } from '../lib/images.js'
 import './dashboard-modern.css'
 
 const groups = [['Content Management', ['Home Section', 'Our Story', 'Catalog', 'Visit Us', 'Contact', 'Community']], ['Other', ['Settings']]]
@@ -9,7 +10,8 @@ const updates = [['Home section updated', 'Hero content was refreshed', '2 hours
 const iconFor = (label) => label.includes('Home') ? 'home' : label.includes('Story') || label === 'Sections' ? 'story' : label.includes('Catalog') ? 'catalog' : label.includes('Contact') || label.includes('Visit') || label.includes('Community') || label === 'Enquiries' ? 'contact' : label.includes('Media') ? 'media' : label === 'Settings' ? 'settings' : 'dashboard'
 function Icon({ type }) { const symbols = { arrow: '→', bell: '♧', logout: '↪', home: '⌂', catalog: '◇', media: '▧', contact: '✉', story: '▤', settings: '⚙', dashboard: '▦' }; return <span className="dash-symbol" aria-hidden="true">{symbols[type] || symbols.dashboard}</span> }
 function Field({ label, value, onChange, area = false }) { const props = { value: value || '', onChange: (event) => onChange(event.target.value), placeholder: label }; return <label className="editor-field"><span>{label}</span>{area ? <textarea {...props} rows="3" /> : <input {...props} />}</label> }
-function ImageField({ label, value, onChange }) { const upload = (event) => { const file = event.target.files?.[0]; if (!file) return; const reader = new FileReader(); reader.onload = () => onChange(reader.result); reader.readAsDataURL(file) }; return <label className="editor-field image-field"><span>{label}</span><div className="image-upload-row"><input value={value || ''} onChange={(event) => onChange(event.target.value)} placeholder="Paste image URL or upload a file" /><label className="upload-button">Upload image<input type="file" accept="image/*" onChange={upload} /></label></div>{value && <img className="image-upload-preview" src={value} alt="Selected preview" />}</label> }
+
+function ImageField({ label, value, onChange }) { const upload = (event) => { const file = event.target.files?.[0]; if (!file) return; const reader = new FileReader(); reader.onload = () => onChange(reader.result); reader.readAsDataURL(file) }; return <label className="editor-field image-field"><span>{label}</span><div className="image-upload-row"><input value={value || ''} onChange={(event) => onChange(event.target.value)} placeholder="Paste image URL or upload a file" /><label className="upload-button">Upload image<input type="file" accept="image/*" onChange={upload} /></label></div>{value && <img className="image-upload-preview" src={getImageUrl(value)} alt="Selected preview" />}</label> }
 function CatalogEditor({ draft, setDraft }) {
   const [selected, setSelected] = useState(0)
   const product = draft.products[selected]
