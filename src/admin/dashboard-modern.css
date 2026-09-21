@@ -821,4 +821,14 @@
     padding: 12px;
     border-radius: 8px;
   }
+
+  /* Prevent iOS Safari auto-zoom on form inputs */
+  .editor-fields input,
+  .editor-fields textarea,
+  .editor-fields select,
+  .catalog-product-form input,
+  .catalog-product-form textarea,
+  .catalog-product-form select {
+    font-size: 16px !important;
+  }
 }
