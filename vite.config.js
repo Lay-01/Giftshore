@@ -42,6 +42,6 @@ const copyImagesPlugin = () => ({
 })
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/Giftshore/' : '/',
+  base: '/',
   plugins: [react(), copyImagesPlugin()],
 })
