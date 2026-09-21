@@ -36,15 +36,12 @@ function copyImages() {
 
 const copyImagesPlugin = () => ({
   name: 'copy-images-plugin',
-  configureServer(server) {
-    server.middlewares.use((req, res, next) => {
-      copyImages()
-      next()
-    })
+  buildStart() {
+    copyImages()
   }
 })
 
 export default defineConfig({
-  base: './',
+  base: process.env.NODE_ENV === 'production' ? '/Giftshore/' : '/',
   plugins: [react(), copyImagesPlugin()],
 })
